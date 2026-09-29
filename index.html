@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kettle &amp; Fig — Coffee, plates, and a table that's yours</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* --- PREMIUM NAVIGATION BAR & ENHANCED VISUALS --- */
+  
+  /* Modern Sticky Glassmorphism Header */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(15, 17, 21, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 12px 0;
+  }
+
+  nav.wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Attractive Logo Styling */
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: -0.5px;
+    transition: text-shadow 0.3s ease;
+  }
+
+  .logo em {
+    color: #e5a93c;
+    font-style: italic;
+  }
+
+  .logo:hover {
+    text-shadow: 0 0 12px rgba(229, 169, 60, 0.6);
+  }
+
+  /* Stylish Nav Links */
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links a {
+    color: #d1d5db;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    padding: 6px 0;
+    transition: color 0.3s ease;
+  }
+
+  .nav-links a:hover, .nav-links a.current {
+    color: #e5a93c;
+  }
+
+  /* Animated Bottom Line on Hover */
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #e5a93c;
+    box-shadow: 0 0 8px #e5a93c;
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover::after, .nav-links a.current::after {
+    width: 100%;
+  }
+
+  /* Glowing Nav Button */
+  .btn-nav {
+    background: linear-gradient(135deg, #e5a93c 0%, #c68233 100%);
+    color: #000 !important;
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(229, 169, 60, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .btn-nav:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(229, 169, 60, 0.5);
+  }
+
+  /* Image Visual Improvements */
+  .hero-photo img, .feature-photo img, .story-photo img {
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+  }
+
+  .hero-photo:hover img, .feature-photo:hover img, .story-photo:hover img {
+    transform: scale(1.03);
+    box-shadow: 0 20px 45px rgba(229, 169, 60, 0.25);
+  }
+
+  /* Real-Image Cooking Video Section */
+  .real-cooking-section {
+    padding: 60px 20px;
+    background: linear-gradient(180deg, rgba(20, 22, 28, 0.9) 0%, rgba(12, 14, 18, 0.95) 100%);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+    margin: 60px 0;
+    text-align: center;
+  }
+
+  .cooking-video-stage {
+    position: relative;
+    width: 280px;
+    height: 320px;
+    margin: 40px auto 20px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .real-food-layer {
+    position: absolute;
+    width: 220px;
+    height: auto;
+    object-fit: contain;
+    opacity: 0;
+    transform: translateY(-140px) scale(0.7);
+    animation: realCookAnimation 7.5s infinite cubic-bezier(0.34, 1.56, 0.64, 1);
+    filter: drop-shadow(0 15px 15px rgba(0,0,0,0.6));
+  }
+
+  .real-bun-bottom {
+    bottom: 10px;
+    width: 200px;
+    animation-delay: 0.2s;
+  }
+
+  .real-patty {
+    bottom: 50px;
+    width: 195px;
+    animation-delay: 1.5s;
+  }
+
+  .real-assembled-burger {
+    bottom: 35px;
+    width: 220px;
+    animation-delay: 3.2s;
+  }
+
+  @keyframes realCookAnimation {
+    0% {
+      opacity: 0;
+      transform: translateY(-140px) scale(0.6) rotate(-5deg);
+    }
+    18% {
+      opacity: 1;
+      transform: translateY(0) scale(1) rotate(0deg);
+    }
+    82% {
+      opacity: 1;
+      transform: translateY(0) scale(1) rotate(0deg);
+    }
+    96%, 100% {
+      opacity: 0;
+      transform: translateY(30px) scale(0.85);
+    }
+  }
+
+  .feature-cell {
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 26px;
+    transition: all 0.4s ease;
+  }
+
+  .feature-cell:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(229, 169, 60, 0.5);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="index.html" class="logo">Kettle <em>&amp;</em> Fig</a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="current">Home</a></li>
+      <li><a href="about.html">Story</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="booking.html">Book</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" style="background:none; border:none; color:#fff; cursor:pointer; font-size:1.2rem;">◐</button>
+      <a href="booking.html" class="btn-nav">Book a table</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero wrap">
+    <div>
+      <h1><span>Coffee,</span> <span>plates, and</span> <span>a table that's yours.</span></h1>
+      <p class="hero-sub">A neighbourhood cafe built around slow mornings, honest plates, and the kind of coffee worth sitting down for. Come for breakfast, stay for the afternoon.</p>
+      <div class="hero-cta">
+        <a href="booking.html" class="btn btn-nav">Reserve a table</a>
+        <a href="menu.html" class="btn ghost">See the menu</a>
+      </div>
+      <p class="hero-note">Open daily, 8am – 11pm · Walk-ins welcome</p>
+    </div>
+    <div class="hero-photo">
+      <!-- High Quality Cafe Interior Image -->
+      <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=80" alt="Warm, plant-filled corner of the cafe dining room">
+      <div class="hero-badge">Kettle &amp; Fig<span>Mailsi, Punjab</span></div>
+    </div>
+  </section>
+
+  <div class="kiran-strip" style="margin-top:70px;"></div>
+
+  <!-- REAL-IMAGE ANIMATED COOKING PROCESS SECTION -->
+  <section class="real-cooking-section wrap">
+    <div class="section-head">
+      <h2 style="font-size: clamp(26px, 3.5vw, 36px); margin-bottom: 10px;">Freshly Stacked, Made to Order</h2>
+      <p style="color: #9ca3af; font-size: 1rem;">Real ingredients assembled step-by-step for our signature artisanal burger.</p>
+    </div>
+
+    <!-- Live Real Image Animation Stage -->
+    <div class="cooking-video-stage">
+      <!-- Real Bottom Bun -->
+      <img class="real-food-layer real-bun-bottom" src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=600&q=80" alt="Freshly Toasted Bun">
+      
+      <!-- Real Flame Grilled Patty -->
+      <img class="real-food-layer real-patty" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80" alt="Grilled Patty">
+      
+      <!-- Fully Assembled Gourmet Burger -->
+      <img class="real-food-layer real-assembled-burger" src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=600&q=80" alt="Freshly Served Gourmet Burger">
+    </div>
+
+    <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 25px;">
+      <span style="font-size: 0.85rem; color: #e5a93c; background: rgba(229,169,60,0.1); border: 1px solid rgba(229,169,60,0.2); padding: 8px 16px; border-radius: 20px;">1. Fresh Toasted Bun</span>
+      <span style="font-size: 0.85rem; color: #e5a93c; background: rgba(229,169,60,0.1); border: 1px solid rgba(229,169,60,0.2); padding: 8px 16px; border-radius: 20px;">2. Flame-Grilled Patty</span>
+      <span style="font-size: 0.85rem; color: #e5a93c; background: rgba(229,169,60,0.1); border: 1px solid rgba(229,169,60,0.2); padding: 8px 16px; border-radius: 20px;">3. Melted Cheese &amp; Veggies</span>
+      <span style="font-size: 0.85rem; color: #e5a93c; background: rgba(229,169,60,0.1); border: 1px solid rgba(229,169,60,0.2); padding: 8px 16px; border-radius: 20px;">4. Served Hot &amp; Fresh</span>
+    </div>
+  </section>
+
+  <!-- FEATURE STRIP -->
+  <section class="feature-strip" style="padding:0;">
+    <div class="feature-grid">
+      <a href="menu.html" class="feature-photo">
+        <!-- Fresh Breakfast/Shakshuka Image -->
+        <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=900&q=80" alt="Baked eggs in tomato sauce, fresh off the pan">
+      </a>
+      <div class="feature-cell">
+        <h3 style="font-size: 1.35rem; margin-bottom: 12px; color: #fff;">Baked eggs, done properly</h3>
+        <p style="line-height: 1.6; color: #9ca3af;">Slow-cooked tomato, cumin, a runny yolk, and warm sourdough to mop it up. Our most-ordered plate, for good reason.</p>
+        <a href="menu.html" style="margin-top: 12px; display: inline-block; color: #e5a93c; text-decoration: none;">View the full menu →</a>
+      </div>
+      <div class="feature-cell">
+        <h3 style="font-size: 1.35rem; margin-bottom: 12px; color: #fff;">Coffee, taken seriously</h3>
+        <p style="line-height: 1.6; color: #9ca3af;">Rotating single-origin beans, brewed to order. No syrup shortcuts, no rushed shots.</p>
+        <a href="menu.html" style="margin-top: 12px; display: inline-block; color: #e5a93c; text-decoration: none;">See drinks menu →</a>
+      </div>
+      <a href="menu.html" class="feature-photo">
+        <!-- High Quality Artisanal Latte Art Image -->
+        <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=900&q=80" alt="Latte art in a ceramic cup, top view">
+      </a>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- STORY -->
+  <section class="story reveal">
+    <div class="wrap">
+      <div class="story-photo">
+        <!-- Fresh Bakery / Dessert Image -->
+        <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=900&q=80" alt="Cheesecake slice served with coffee">
+      </div>
+      <div class="story-text">
+        <h2 style="font-size:clamp(28px,3.5vw,38px);margin-bottom:22px; color:#fff;">Started with one espresso machine and a rented corner.</h2>
+        <p style="line-height: 1.6; color: #9ca3af;">Kettle &amp; Fig opened as a single counter and four stools. We kept it simple: good beans, a short menu done properly, and enough room to actually sit down.</p>
+        <p style="line-height: 1.6; color: #9ca3af;">Every plate is built around what's in season. The bakes come out of our own oven each morning — nothing is reheated to order.</p>
+        <a href="about.html" class="btn ghost" style="margin-top:12px;">Read our story</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- BOOKING TEASER -->
+  <section class="booking">
+    <div class="wrap" style="text-align:left;max-width:640px;">
+      <div class="section-head" style="margin-bottom:24px;">
+        <h2 style="color:inherit;">Save yourself a table</h2>
+        <p>Weekends fill up by noon. Booking takes under a minute.</p>
+      </div>
+      <a href="booking.html" class="btn btn-nav">Reserve a table</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Kettle &amp; Fig Cafe · Mailsi, Punjab</p>
+    <ul class="footer-links">
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="booking.html">Book a table</a></li>
+      <li><a href="about.html">Story</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
