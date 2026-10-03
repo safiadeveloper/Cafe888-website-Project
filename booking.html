@@ -62,19 +62,10 @@ body{
 ::selection{background:var(--maroon);color:#fff;}
 h1,h2,h3,.display{font-family:'Fraunces',Georgia,serif;font-weight:500;line-height:1.05;margin:0;letter-spacing:-0.01em;}
 a{color:inherit;}
-img{max-width:100%;display:block;object-fit:cover;}
+img,video{max-width:100%;display:block;object-fit:cover;}
 .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
 @media (max-width:640px){.wrap{padding:0 20px;}}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--maroon);outline-offset:3px;}
-
-/* ---------- decorative kiran strip (truck-art inspired divider) ---------- */
-.kiran-strip{height:14px;width:100%;background:
-  repeating-linear-gradient(115deg,
-    var(--marigold) 0 18px,
-    var(--maroon) 18px 36px,
-    var(--mehndi) 36px 54px);
-  opacity:.9;
-}
 
 /* ---------- NAV ---------- */
 header{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--cream) 88%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
@@ -92,84 +83,106 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;height:78
 .btn:hover{transform:translateY(-2px);background:var(--maroon-deep);border-color:var(--maroon-deep);box-shadow:0 10px 20px -10px var(--maroon);}
 .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line);}
 .btn.ghost:hover{background:var(--ink);color:var(--cream);border-color:var(--ink);box-shadow:none;}
-.btn.gold{background:var(--marigold);border-color:var(--marigold);color:var(--ink);}
-.btn.gold:hover{background:var(--marigold-deep);border-color:var(--marigold-deep);box-shadow:0 10px 20px -10px var(--marigold);}
+.btn.sm{padding:8px 16px;font-size:13px;}
 .theme-toggle{border:1px solid var(--line);background:transparent;border-radius:20px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;color:var(--ink);}
 
-/* ---------- HERO ---------- */
-.hero{padding:88px 0 0;display:grid;grid-template-columns:1.05fr 0.95fr;gap:48px;align-items:center;}
-@media (max-width:900px){.hero{grid-template-columns:1fr;padding:48px 0 0;}}
-.hero h1{font-size:clamp(38px,5.6vw,68px);max-width:12ch;}
-.hero-sub{margin-top:20px;max-width:46ch;color:var(--ink-soft);font-size:17px;line-height:1.65;}
-.hero-cta{margin-top:32px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;}
-.hero-note{font-size:13px;color:var(--ink-soft);margin-top:20px;}
-.hero-photo{position:relative;aspect-ratio:4/5;border-radius:4px;overflow:hidden;box-shadow:0 30px 60px -25px rgba(30,10,5,.35);}
-.hero-photo img{width:100%;height:100%;opacity:0;transform:scale(1.06);animation:photoIn 1.1s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:.1s;}
-.hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(20,8,4,.45) 100%);}
-.hero-badge{position:absolute;left:18px;bottom:18px;z-index:2;color:#fff;font-family:'Fraunces',serif;font-size:15px;}
-.hero-badge span{display:block;font-family:'Inter';font-size:12px;opacity:.85;font-weight:500;}
-@keyframes photoIn{to{opacity:1;transform:scale(1);}}
-.hero h1 span{display:inline-block;opacity:0;transform:translateY(16px);animation:riseIn .8s cubic-bezier(.2,.7,.2,1) forwards;}
-.hero h1 span:nth-child(2){animation-delay:.08s;}
-.hero h1 span:nth-child(3){animation-delay:.16s;}
-@keyframes riseIn{to{opacity:1;transform:translateY(0);}}
-@media (prefers-reduced-motion:reduce){.hero-photo img,.hero h1 span{animation:none;opacity:1;transform:none;}}
-
 /* ---------- SECTION SCAFFOLD ---------- */
-section{padding:84px 0;}
-.section-head{max-width:640px;margin-bottom:48px;}
+section{padding:72px 0;}
+.section-head{max-width:640px;margin-bottom:40px;}
 .section-head h2{font-size:clamp(29px,3.8vw,42px);}
 .section-head p{color:var(--ink-soft);margin-top:14px;font-size:16px;line-height:1.6;}
-hr.rule{border:none;border-top:1px solid var(--line);margin:0;}
-.page-hero{padding:64px 0 40px;}
-.page-hero h1{font-size:clamp(34px,5vw,54px);}
-.page-hero p{color:var(--ink-soft);margin-top:16px;font-size:16.5px;max-width:56ch;line-height:1.6;}
 
-/* ---------- FEATURE STRIP (home) ---------- */
-.feature-strip{background:var(--cream-raised);}
-.feature-grid{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:0;}
-@media (max-width:860px){.feature-grid{grid-template-columns:1fr;}}
-.feature-photo{aspect-ratio:5/4;overflow:hidden;position:relative;}
-.feature-photo img{width:100%;height:100%;transition:transform .6s cubic-bezier(.2,.7,.2,1);}
-.feature-photo:hover img{transform:scale(1.06);}
-.feature-cell{padding:36px;border-left:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;}
-@media (max-width:860px){.feature-cell{border-left:none;border-top:1px solid var(--line);}}
-.feature-cell h3{font-size:20px;margin-bottom:10px;}
-.feature-cell p{color:var(--ink-soft);font-size:14.5px;line-height:1.6;margin:0 0 14px;}
-.feature-cell a{font-size:13.5px;font-weight:600;color:var(--maroon);text-decoration:none;}
+/* ---------- FOOD PROMO / ADS SECTION ---------- */
+.promo-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:24px;
+}
+@media (max-width:960px){.promo-grid{grid-template-columns:1fr;}}
 
-/* ---------- STORY ---------- */
-.story .wrap{display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;align-items:center;}
-@media (max-width:900px){.story .wrap{grid-template-columns:1fr;gap:36px;}}
-.story-photo{aspect-ratio:4/5;border-radius:4px;overflow:hidden;}
-.story-text p{color:var(--ink-soft);line-height:1.75;font-size:16.5px;margin:0 0 18px;}
-.story-text p:last-child{margin-bottom:0;}
-
-/* ---------- MENU ---------- */
-.menu-tabs{display:flex;gap:8px;margin-bottom:40px;flex-wrap:wrap;}
-.menu-tab{padding:10px 20px;border:1px solid var(--line);background:transparent;border-radius:22px;font-size:14px;color:var(--ink-soft);cursor:pointer;font-family:inherit;font-weight:500;transition:all .25s ease;}
-.menu-tab.active{background:var(--maroon);color:#fff;border-color:var(--maroon);}
-.menu-panel{display:none;}
-.menu-panel.active{display:grid;grid-template-columns:1fr 1fr;gap:0 56px;}
-@media (max-width:760px){.menu-panel.active{grid-template-columns:1fr;}}
-.menu-list{list-style:none;margin:0;padding:0;}
-.menu-item{display:flex;align-items:baseline;gap:12px;padding:19px 0;border-bottom:1px solid var(--line);}
-.menu-item:first-child{border-top:1px solid var(--line);}
-.menu-item-name{font-family:'Fraunces',serif;font-size:18.5px;font-weight:500;white-space:nowrap;}
-.menu-item-leader{flex:1;border-bottom:1px dotted var(--line);position:relative;top:-4px;min-width:12px;}
-.menu-item-price{font-size:15.5px;color:var(--ink-soft);white-space:nowrap;}
-.menu-item-desc{flex-basis:100%;color:var(--ink-soft);font-size:14px;margin-top:4px;line-height:1.5;max-width:60ch;}
-
-.menu-feature{display:flex;flex-direction:column;gap:18px;margin-bottom:44px;}
-.menu-feature-photo{aspect-ratio:16/10;border-radius:4px;overflow:hidden;}
-.menu-feature-cap{display:flex;justify-content:space-between;align-items:baseline;}
-.menu-feature-cap h3{font-size:22px;}
-.menu-feature-cap span{color:var(--marigold-deep);font-weight:600;}
-.menu-feature p{color:var(--ink-soft);font-size:14.5px;line-height:1.55;margin:0;}
+.promo-card{
+  background:var(--cream-raised);
+  border:1px solid var(--line);
+  border-radius:8px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  transition:transform .3s ease, box-shadow .3s ease;
+  position:relative;
+}
+.promo-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 40px -15px rgba(0,0,0,0.15);
+}
+.promo-tag{
+  position:absolute;
+  top:16px;
+  left:16px;
+  background:var(--maroon);
+  color:#fff;
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  padding:5px 12px;
+  border-radius:20px;
+  z-index:2;
+}
+.promo-img{
+  height:220px;
+  overflow:hidden;
+  position:relative;
+  background:var(--cream-raised);
+}
+.promo-img img,
+.promo-img video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .5s cubic-bezier(.2,.7,.2,1);
+}
+.promo-card:hover .promo-img video,
+.promo-card:hover .promo-img img{
+  transform:scale(1.06);
+}
+.promo-body{
+  padding:24px;
+  display:flex;
+  flex-direction:column;
+  flex-grow:1;
+}
+.promo-title-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  margin-bottom:10px;
+}
+.promo-title-row h3{
+  font-size:22px;
+  color:var(--ink);
+}
+.promo-price{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  color:var(--gold);
+  font-size:20px;
+}
+.promo-desc{
+  font-size:14.5px;
+  color:var(--ink-soft);
+  line-height:1.6;
+  margin-bottom:20px;
+  flex-grow:1;
+}
+.promo-footer{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
 
 /* ---------- BOOKING ---------- */
 .booking{background:var(--mehndi-deep);color:#FBF6EA;}
-.booking .section-head p,.booking .page-hero p{color:rgba(251,246,234,0.8);}
+.booking .section-head p{color:rgba(251,246,234,0.8);}
 .booking .wrap.split{display:grid;grid-template-columns:0.85fr 1.15fr;gap:56px;}
 @media (max-width:900px){.booking .wrap.split{grid-template-columns:1fr;}}
 .book-steps{list-style:none;margin:0;padding:0;counter-reset:step;}
@@ -195,37 +208,24 @@ hr.rule{border:none;border-top:1px solid var(--line);margin:0;}
 .form-msg{font-size:13.5px;margin-top:6px;min-height:18px;}
 .form-msg.error{color:var(--maroon);}
 .form-msg.ok{color:var(--mehndi);}
-.confirm-box{display:none;border:1px solid var(--line);border-radius:4px;padding:22px 24px;margin-top:22px;background:var(--cream-raised);animation:riseIn .5s ease forwards;}
+.confirm-box{display:none;border:1px solid var(--line);border-radius:4px;padding:22px 24px;margin-top:22px;background:var(--cream-raised);}
 .confirm-box.show{display:block;}
 .confirm-box h4{font-family:'Fraunces',serif;font-size:18px;margin:0 0 8px;}
 .confirm-box p{margin:2px 0;font-size:14px;color:var(--ink-soft);}
 
-/* ---------- INFO / GALLERY / TESTIMONIAL ---------- */
+/* ---------- INFO / FOOTER ---------- */
 .info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
 .info-cell{background:var(--cream);padding:34px 30px;}
 @media (max-width:760px){.info-grid{grid-template-columns:1fr;}}
 .info-cell h3{font-size:16px;font-weight:600;margin-bottom:14px;font-family:'Inter';}
 .info-cell p{margin:0 0 4px;color:var(--ink-soft);font-size:15px;line-height:1.6;}
 
-.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
-@media (max-width:760px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
-.gallery-grid img{width:100%;height:100%;aspect-ratio:1/1;border-radius:4px;transition:transform .5s ease;}
-.gallery-grid a{overflow:hidden;border-radius:4px;display:block;}
-.gallery-grid a:hover img{transform:scale(1.08);}
-
-/* ---------- FOOTER ---------- */
 footer{border-top:1px solid var(--line);padding:44px 0;}
 footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
 footer p{margin:0;font-size:13.5px;color:var(--ink-soft);}
 .footer-links{display:flex;gap:22px;list-style:none;padding:0;margin:0;font-size:13.5px;}
 .footer-links a{text-decoration:none;color:var(--ink-soft);}
 .footer-links a:hover{color:var(--ink);}
-
-/* reveal-on-scroll (single orchestrated pattern, applied selectively via JS) */
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);}
-.reveal.in{opacity:1;transform:translateY(0);}
-@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
-
 </style>
 </head>
 <body>
@@ -246,7 +246,80 @@ footer p{margin:0;font-size:13.5px;color:var(--ink-soft);}
 </header>
 
 <main>
-  <section class="booking" style="padding-top:64px;">
+  <!-- PROMOTIONAL ADS / FEATURED DISHES WITH WORKING VIDEOS -->
+  <section style="background:var(--cream);">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Signature Specials</h2>
+        <p>Explore our highly-recommended chef creations before reserving your table.</p>
+      </div>
+
+      <div class="promo-grid">
+        <!-- BURGER AD WITH VIDEO -->
+        <article class="promo-card">
+          <span class="promo-tag">Chef's Choice</span>
+          <div class="promo-img">
+            <video autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80">
+              <source src="https://assets.mixkit.co/videos/preview/mixkit-close-up-of-a-delicious-burger-42861-large.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="promo-body">
+            <div class="promo-title-row">
+              <h3>Smokey Fig Burger</h3>
+              <span class="promo-price">PKR 1,250</span>
+            </div>
+            <p class="promo-desc">Artisanal smash beef patty topped with smoked cheddar, caramelized onion jam, signature fig relish, and brioche bun.</p>
+            <div class="promo-footer">
+              <a href="#booking-section" class="btn sm">Reserve Table</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PASTA AD WITH VIDEO -->
+        <article class="promo-card">
+          <span class="promo-tag">Popular</span>
+          <div class="promo-img">
+            <video autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1621996346565-e3d5d6281318?auto=format&fit=crop&w=800&q=80">
+              <source src="https://assets.mixkit.co/videos/preview/mixkit-pasta-falling-into-a-bowl-43336-large.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="promo-body">
+            <div class="promo-title-row">
+              <h3>Truffle Rigatoni</h3>
+              <span class="promo-price">PKR 1,450</span>
+            </div>
+            <p class="promo-desc">Fresh handmade rigatoni tossed in slow-cooked wild mushroom parmesan cream sauce and aromatic black truffle oil.</p>
+            <div class="promo-footer">
+              <a href="#booking-section" class="btn sm">Reserve Table</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PIZZA AD WITH VIDEO -->
+        <article class="promo-card">
+          <span class="promo-tag">Wood-Fired</span>
+          <div class="promo-img">
+            <video autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80">
+              <source src="https://assets.mixkit.co/videos/preview/mixkit-hands-taking-a-slice-of-pizza-43330-large.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="promo-body">
+            <div class="promo-title-row">
+              <h3>Rustic Artisanal Pizza</h3>
+              <span class="promo-price">PKR 1,650</span>
+            </div>
+            <p class="promo-desc">Hand-stretched sourdough base, San Marzano tomato sauce, fresh mozzarella di bufala, fresh basil, and virgin olive oil drizzle.</p>
+            <div class="promo-footer">
+              <a href="#booking-section" class="btn sm">Reserve Table</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING SECTION -->
+  <section class="booking" id="booking-section">
     <div class="wrap split">
       <div>
         <div class="section-head" style="margin-bottom:36px;">
@@ -315,6 +388,7 @@ footer p{margin:0;font-size:13.5px;color:var(--ink-soft);}
     </div>
   </section>
 
+  <!-- INFO SECTION -->
   <section id="visit">
     <div class="wrap">
       <div class="section-head">
@@ -367,39 +441,6 @@ footer p{margin:0;font-size:13.5px;color:var(--ink-soft);}
     const next = current === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', next);
     try { localStorage.setItem('kf-theme', next); } catch(e){}
-  });
-})();
-
-// ---- Scroll reveal ----
-(function(){
-  const items = document.querySelectorAll('.reveal');
-  if(!items.length) return;
-  if(!('IntersectionObserver' in window)){
-    items.forEach(function(el){ el.classList.add('in'); });
-    return;
-  }
-  const io = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting){
-        entry.target.classList.add('in');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
-  items.forEach(function(el){ io.observe(el); });
-})();
-
-// ---- Menu tabs ----
-(function(){
-  const tabs = document.querySelectorAll('.menu-tab');
-  if(!tabs.length) return;
-  tabs.forEach(function(tab){
-    tab.addEventListener('click', function(){
-      document.querySelectorAll('.menu-tab').forEach(function(t){ t.classList.remove('active'); });
-      document.querySelectorAll('.menu-panel').forEach(function(p){ p.classList.remove('active'); });
-      tab.classList.add('active');
-      document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
-    });
   });
 })();
 
@@ -488,7 +529,6 @@ footer p{margin:0;font-size:13.5px;color:var(--ink-soft);}
     msg.classList.add('ok');
   });
 })();
-
 </script>
 </body>
 </html>
