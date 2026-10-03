@@ -2,322 +2,285 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0d0f13">
+<meta name="referrer" content="no-referrer">
 <title>Kettle &amp; Fig — Coffee, plates, and a table that's yours</title>
-<link rel="stylesheet" href="styles.css">
+<meta name="description" content="A neighbourhood cafe in Mailsi built around honest plates, fresh burgers and coffee worth sitting down for. Open daily, 8am – 11pm.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  /* --- PREMIUM NAVIGATION BAR & ENHANCED VISUALS --- */
-  
-  /* Modern Sticky Glassmorphism Header */
-  header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: rgba(15, 17, 21, 0.75);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 12px 0;
-  }
+:root{--bg:#0d0f13;--bg2:#14171d;--card:rgba(255,255,255,.045);--line:rgba(255,255,255,.1);--ink:#f4f1ea;--soft:#a3a9b5;--gold:#e5a93c;--gold2:#c68233;--red:#d64045;--ease:cubic-bezier(.2,.7,.2,1)}
+:root[data-theme="light"]{--bg:#fbf7ef;--bg2:#f2ebdd;--card:rgba(0,0,0,.04);--line:rgba(0,0,0,.12);--ink:#1d1a16;--soft:#6a6358;--gold:#b9770e;--gold2:#8f5a08}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:500;line-height:1.08;margin:0;letter-spacing:-.01em}
+a{color:inherit}
+video{display:block;width:100%;height:100%;object-fit:cover;background:var(--bg2)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+::selection{background:var(--gold);color:#111}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--red));z-index:2000}
 
-  nav.wrap {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+/* header */
+header{position:sticky;top:0;z-index:1000;background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav.wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
+.logo{font:600 25px Fraunces,serif;text-decoration:none;transition:text-shadow .3s}
+.logo em{color:var(--gold);font-weight:400}
+.logo:hover{text-shadow:0 0 18px color-mix(in srgb,var(--gold) 60%,transparent)}
+.nav-links{display:flex;gap:30px;list-style:none;margin:0;padding:0}
+.nav-links a{position:relative;text-decoration:none;color:var(--soft);font-size:15px;font-weight:500;padding:6px 0;transition:color .25s}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--gold);transition:width .3s}
+.nav-links a:hover,.nav-links a.current{color:var(--gold)}
+.nav-links a:hover::after,.nav-links a.current::after{width:100%}
+.nav-r{display:flex;align-items:center;gap:10px}
+.ib{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;font-size:16px}
+.ib:hover{border-color:var(--gold);color:var(--gold)}
+.menu-btn{display:none}
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:40px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .3s var(--ease),box-shadow .3s}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#14100a;box-shadow:0 6px 22px -6px color-mix(in srgb,var(--gold) 70%,transparent)}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 14px 30px -8px color-mix(in srgb,var(--gold) 80%,transparent)}
+.btn-gold::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(100deg,transparent,#fff7,transparent);transform:skewX(-20deg)}
+.btn-gold:hover::after{animation:shine .8s}
+@keyframes shine{to{left:140%}}
+.btn-ghost{border-color:var(--line);background:var(--card);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px)}
 
-  /* Attractive Logo Styling */
-  .logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #fff;
-    text-decoration: none;
-    letter-spacing: -0.5px;
-    transition: text-shadow 0.3s ease;
-  }
+/* hero */
+.hero{position:relative;isolation:isolate;overflow:hidden}
+.blob{position:absolute;z-index:-1;border-radius:50%;filter:blur(90px);opacity:.34;animation:drift 16s ease-in-out infinite alternate}
+.b1{width:420px;height:420px;background:var(--gold);top:-120px;left:-120px}
+.b2{width:360px;height:360px;background:var(--red);bottom:-120px;right:-80px;animation-delay:-6s}
+@keyframes drift{to{transform:translate(70px,50px) scale(1.2)}}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding-top:76px;padding-bottom:84px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--gold);font-size:12.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+.eyebrow::before{content:"";width:32px;height:2px;background:currentColor}
+.hero h1{font-size:clamp(40px,6vw,76px);margin:18px 0 22px}
+.hero h1 span{display:inline-block;opacity:0;transform:translateY(24px);animation:up .9s var(--ease) forwards}
+.hero h1 span:nth-child(2){animation-delay:.1s}.hero h1 span:nth-child(3){animation-delay:.2s;color:var(--gold);font-style:italic;font-weight:400}
+@keyframes up{to{opacity:1;transform:none}}
+.hero-sub{max-width:48ch;color:var(--soft);font-size:17.5px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+.hero-note{margin-top:22px;font-size:13.5px;color:var(--soft);display:flex;align-items:center;gap:10px}
+.hero-note i{width:9px;height:9px;border-radius:50%;background:#38c172;animation:pulse 1.8s infinite}
+@keyframes pulse{50%{opacity:.3;transform:scale(1.6)}}
+.hero-media{position:relative;aspect-ratio:4/5;animation:bob 7s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-12px)}}
+.hero-media::before{content:"";position:absolute;inset:-14px 14px 14px -14px;border:2px solid var(--gold);border-radius:30px;opacity:.7}
+.hero-media .vid{position:absolute;inset:0;border-radius:28px;overflow:hidden;box-shadow:0 40px 70px -30px #000;border:1px solid var(--line)}
+.chip{position:absolute;z-index:3;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:30px;padding:10px 16px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px}
+.chip i{width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.c1{left:-18px;top:34px;animation:bob 6s ease-in-out infinite -2s}.c2{right:-14px;bottom:44px;animation:bob 5s ease-in-out infinite -1s}
 
-  .logo em {
-    color: #e5a93c;
-    font-style: italic;
-  }
+/* marquee */
+.marquee{background:var(--gold);color:#14100a;overflow:hidden;white-space:nowrap;transform:rotate(-1deg);margin:8px -10px 0;box-shadow:0 10px 30px -12px #0008}
+.marquee div{display:inline-block;padding:15px 0;font:italic 500 23px Fraunces,serif;animation:mq 32s linear infinite}
+.marquee span{margin:0 24px}.marquee b{font-style:normal;margin-left:24px}
+@keyframes mq{to{transform:translateX(-50%)}}
 
-  .logo:hover {
-    text-shadow: 0 0 12px rgba(229, 169, 60, 0.6);
-  }
+section.s{padding:96px 0}
+.head{max-width:620px;margin:0 auto 46px;text-align:center}
+.head h2{font-size:clamp(30px,4vw,46px);margin:12px 0 14px}
+.head p{color:var(--soft);margin:0}
 
-  /* Stylish Nav Links */
-  .nav-links {
-    display: flex;
-    gap: 28px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
+/* showcase bento */
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(150px,21vw,250px);gap:14px}
+.tile{position:relative;overflow:hidden;border-radius:22px;border:1px solid var(--line);isolation:isolate;transition:border-color .4s,box-shadow .4s}
+.tile:nth-child(1){grid-column:span 2;grid-row:span 2}.tile:nth-child(4){grid-column:span 2}
+.tile video{transition:transform 1s var(--ease)}
+.tile:hover{border-color:var(--gold);box-shadow:0 20px 50px -20px color-mix(in srgb,var(--gold) 50%,transparent)}
+.tile:hover video{transform:scale(1.08)}
+.tile::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.78))}
+.tile span{position:absolute;z-index:2;left:18px;bottom:14px;font:500 20px Fraunces,serif;color:#fff}
+.steps{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:34px}
+.steps span{font-size:13.5px;color:var(--gold);background:color-mix(in srgb,var(--gold) 10%,transparent);border:1px solid color-mix(in srgb,var(--gold) 28%,transparent);padding:9px 18px;border-radius:30px}
 
-  .nav-links a {
-    color: #d1d5db;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.95rem;
-    position: relative;
-    padding: 6px 0;
-    transition: color 0.3s ease;
-  }
+/* feature strip */
+.fs{display:grid;grid-template-columns:1.1fr 1fr 1fr 1.1fr;gap:16px}
+.fv{border-radius:22px;overflow:hidden;min-height:320px;border:1px solid var(--line);display:block}
+.fv video{transition:transform .9s var(--ease)}.fv:hover video{transform:scale(1.07)}
+.fc{border-radius:22px;background:var(--card);border:1px solid var(--line);padding:30px;display:flex;flex-direction:column;justify-content:center;transition:transform .4s,border-color .4s,box-shadow .4s}
+.fc:hover{transform:translateY(-8px);border-color:var(--gold);box-shadow:0 18px 40px -18px #000}
+.fc h3{font-size:25px;margin-bottom:10px}.fc p{color:var(--soft);margin:0 0 14px;font-size:15px}
+.fc a{color:var(--gold);text-decoration:none;font-weight:600;font-size:14.5px}
 
-  .nav-links a:hover, .nav-links a.current {
-    color: #e5a93c;
-  }
+/* story */
+.story .wrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:72px;align-items:center}
+.sp{position:relative;aspect-ratio:4/5}
+.sp::before{content:"";position:absolute;inset:-14px 14px 14px -14px;border:2px solid var(--gold);border-radius:26px;opacity:.6}
+.sp .vid{position:absolute;inset:0;border-radius:24px;overflow:hidden;box-shadow:0 36px 64px -30px #000}
+.story h2{font-size:clamp(30px,3.8vw,46px);margin:14px 0 22px}
+.story p{color:var(--soft);font-size:17px;margin:0 0 16px}
 
-  /* Animated Bottom Line on Hover */
-  .nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0%;
-    height: 2px;
-    background: #e5a93c;
-    box-shadow: 0 0 8px #e5a93c;
-    transition: width 0.3s ease;
-  }
+/* cta */
+.cta{position:relative;isolation:isolate;overflow:hidden;padding:100px 0;text-align:center}
+.cta video{position:absolute;inset:0;z-index:-2;opacity:.4}
+.cta::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 50% 40%,transparent 0,var(--bg) 85%)}
+.cta h2{font-size:clamp(32px,4.6vw,56px);margin:14px 0}
+.cta p{color:var(--soft);margin:0 auto 30px;max-width:44ch}
 
-  .nav-links a:hover::after, .nav-links a.current::after {
-    width: 100%;
-  }
+footer{border-top:1px solid var(--line);padding:42px 0}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+footer p{margin:0;color:var(--soft);font-size:14px}
+.fl{display:flex;gap:22px;list-style:none;padding:0;margin:0;font-size:14px}.fl a{text-decoration:none;color:var(--soft)}.fl a:hover{color:var(--gold)}
 
-  /* Glowing Nav Button */
-  .btn-nav {
-    background: linear-gradient(135deg, #e5a93c 0%, #c68233 100%);
-    color: #000 !important;
-    padding: 10px 22px;
-    border-radius: 30px;
-    font-weight: 600;
-    text-decoration: none;
-    box-shadow: 0 4px 15px rgba(229, 169, 60, 0.3);
-    transition: all 0.3s ease;
-  }
+.motion{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:1500;display:flex;gap:8px;align-items:center;padding:10px 16px;border-radius:30px;border:1px solid var(--line);background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--ink);font:600 13px Inter,sans-serif;cursor:pointer}
+video.stalled{animation:kb 14s ease-in-out infinite alternate!important}
+@keyframes kb{to{transform:scale(1.14) translate(-1.5%,-1%)}}
+.rv{opacity:0;transform:translateY(34px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.in{opacity:1;transform:none}
 
-  .btn-nav:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(229, 169, 60, 0.5);
-  }
+@media(max-width:900px){
+ .hero .wrap,.story .wrap{grid-template-columns:1fr;gap:44px}
+ .hero .wrap{padding-top:44px}
+ .hero-media{max-width:440px;margin:0 auto;width:100%}
+ .fs{grid-template-columns:1fr 1fr}.fv{min-height:240px}
+ section.s{padding:68px 0}
+}
+@media(max-width:820px){
+ .menu-btn{display:block}.nav-r .btn{display:none}
+ .nav-links{display:none;position:absolute;left:0;right:0;top:74px;flex-direction:column;gap:0;padding:6px 28px 16px;background:var(--bg);border-bottom:1px solid var(--line)}
+ .nav-links.open{display:flex}.nav-links a{display:block;padding:14px 0;font-size:17px;border-bottom:1px solid var(--line)}.nav-links a::after{display:none}
+}
+@media(max-width:620px){
+ .wrap{padding:0 18px}
+ .bento{grid-template-columns:1fr 1fr;grid-auto-rows:44vw;gap:10px}.tile:nth-child(1){grid-column:span 2;grid-row:span 1}.tile span{font-size:16px}
+ .fs{grid-template-columns:1fr}.c1{left:-6px}.c2{right:-6px}
+ .hero-cta .btn{flex:1;justify-content:center}.marquee div{font-size:19px}
+ .motion span+span{display:none}
+}
+@media(prefers-reduced-motion:reduce){.blob,.hero-media,.chip,.marquee div,.hero-note i{animation:none!important}.hero h1 span,.rv{opacity:1;transform:none}}
 
-  /* Image Visual Improvements */
-  .hero-photo img, .feature-photo img, .story-photo img {
-    border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
-  }
-
-  .hero-photo:hover img, .feature-photo:hover img, .story-photo:hover img {
-    transform: scale(1.03);
-    box-shadow: 0 20px 45px rgba(229, 169, 60, 0.25);
-  }
-
-  /* Real-Image Cooking Video Section */
-  .real-cooking-section {
-    padding: 60px 20px;
-    background: linear-gradient(180deg, rgba(20, 22, 28, 0.9) 0%, rgba(12, 14, 18, 0.95) 100%);
-    border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.7);
-    margin: 60px 0;
-    text-align: center;
-  }
-
-  .cooking-video-stage {
-    position: relative;
-    width: 280px;
-    height: 320px;
-    margin: 40px auto 20px;
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-    justify-content: flex-start;
-  }
-
-  .real-food-layer {
-    position: absolute;
-    width: 220px;
-    height: auto;
-    object-fit: contain;
-    opacity: 0;
-    transform: translateY(-140px) scale(0.7);
-    animation: realCookAnimation 7.5s infinite cubic-bezier(0.34, 1.56, 0.64, 1);
-    filter: drop-shadow(0 15px 15px rgba(0,0,0,0.6));
-  }
-
-  .real-bun-bottom {
-    bottom: 10px;
-    width: 200px;
-    animation-delay: 0.2s;
-  }
-
-  .real-patty {
-    bottom: 50px;
-    width: 195px;
-    animation-delay: 1.5s;
-  }
-
-  .real-assembled-burger {
-    bottom: 35px;
-    width: 220px;
-    animation-delay: 3.2s;
-  }
-
-  @keyframes realCookAnimation {
-    0% {
-      opacity: 0;
-      transform: translateY(-140px) scale(0.6) rotate(-5deg);
-    }
-    18% {
-      opacity: 1;
-      transform: translateY(0) scale(1) rotate(0deg);
-    }
-    82% {
-      opacity: 1;
-      transform: translateY(0) scale(1) rotate(0deg);
-    }
-    96%, 100% {
-      opacity: 0;
-      transform: translateY(30px) scale(0.85);
-    }
-  }
-
-  .feature-cell {
-    border-radius: 18px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 26px;
-    transition: all 0.4s ease;
-  }
-
-  .feature-cell:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(229, 169, 60, 0.5);
-    transform: translateY(-6px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-  }
+/* ===== animated food scenes (always play; real footage fades in on top) ===== */
+video{position:absolute;inset:0;background:transparent;opacity:0;transition:opacity .7s}
+video.on{opacity:1}
+.cta video{opacity:.4}
+.fv{position:relative}
+video.stalled{animation:none!important}
+.scene{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 50% 36%,#52301a 0,#1a120d 74%)}
+.scene.fries{background:radial-gradient(circle at 50% 36%,#5e1f23 0,#170d0f 74%)}
+.scene::before{content:"";position:absolute;width:62%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#e5a93c55,transparent 68%);animation:glow 3.4s ease-in-out infinite alternate}
+@keyframes glow{to{transform:scale(1.25);opacity:.55}}
+.scene svg{position:relative;width:78%;height:78%;transition:opacity .5s}
+.scene svg.out{opacity:0}
+.scene .L,.scene .F{opacity:0}
+.scene svg.go .L{animation:drop .85s cubic-bezier(.3,1.5,.5,1) both;animation-delay:var(--d)}
+.scene svg.go .F{animation:pop .8s cubic-bezier(.3,1.5,.5,1) both;animation-delay:var(--d)}
+@keyframes drop{from{transform:translateY(-150px);opacity:0}to{transform:none;opacity:1}}
+@keyframes pop{from{transform:translateY(80px);opacity:0}to{transform:none;opacity:1}}
+.scene .sm{animation:steam 3s ease-in-out infinite;animation-delay:var(--d)}
+@keyframes steam{0%{transform:translateY(8px);opacity:0}35%{opacity:.7}100%{transform:translateY(-16px);opacity:0}}
+.paused .scene *,.paused .scene::before{animation-play-state:paused!important}
+@media(prefers-reduced-motion:reduce){.scene .sm,.scene::before{animation:none!important}.scene svg.go .L,.scene svg.go .F{animation:none!important;opacity:1}}
 </style>
 </head>
 <body>
+<div id="bar"></div>
 
 <header>
   <nav class="wrap">
     <a href="index.html" class="logo">Kettle <em>&amp;</em> Fig</a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="links">
       <li><a href="index.html" class="current">Home</a></li>
       <li><a href="about.html">Story</a></li>
       <li><a href="menu.html">Menu</a></li>
       <li><a href="booking.html">Book</a></li>
     </ul>
-    <div style="display:flex;align-items:center;gap:16px;">
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" style="background:none; border:none; color:#fff; cursor:pointer; font-size:1.2rem;">◐</button>
-      <a href="booking.html" class="btn-nav">Book a table</a>
+    <div class="nav-r">
+      <button class="ib" id="theme" aria-label="Toggle light / dark mode">◐</button>
+      <a href="booking.html" class="btn btn-gold">Book a table</a>
+      <button class="ib menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="links">☰</button>
     </div>
   </nav>
 </header>
 
 <main>
   <!-- HERO -->
-  <section class="hero wrap">
-    <div>
-      <h1><span>Coffee,</span> <span>plates, and</span> <span>a table that's yours.</span></h1>
-      <p class="hero-sub">A neighbourhood cafe built around slow mornings, honest plates, and the kind of coffee worth sitting down for. Come for breakfast, stay for the afternoon.</p>
-      <div class="hero-cta">
-        <a href="booking.html" class="btn btn-nav">Reserve a table</a>
-        <a href="menu.html" class="btn ghost">See the menu</a>
+  <section class="hero">
+    <span class="blob b1"></span><span class="blob b2"></span>
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Mailsi · Punjab</span>
+        <h1><span>Coffee,</span> <span>plates, and</span> <span>a table that's yours.</span></h1>
+        <p class="hero-sub">A neighbourhood cafe built around slow mornings, honest plates, and the kind of coffee worth sitting down for. Come for breakfast, stay for the afternoon.</p>
+        <div class="hero-cta">
+          <a href="booking.html" class="btn btn-gold">Reserve a table</a>
+          <a href="menu.html" class="btn btn-ghost">See the menu</a>
+        </div>
+        <p class="hero-note"><i></i>Open daily, 8am – 11pm · Walk-ins welcome</p>
       </div>
-      <p class="hero-note">Open daily, 8am – 11pm · Walk-ins welcome</p>
-    </div>
-    <div class="hero-photo">
-      <!-- High Quality Cafe Interior Image -->
-      <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=80" alt="Warm, plant-filled corner of the cafe dining room">
-      <div class="hero-badge">Kettle &amp; Fig<span>Mailsi, Punjab</span></div>
+      <div class="hero-media">
+        <div class="vid"><video data-v="14010" data-s="burger" data-t="0" aria-label="Double burger with fries"></video></div>
+        <div class="chip c1"><i></i>Fresh off the grill</div>
+        <div class="chip c2"><i></i>Made to order</div>
+      </div>
     </div>
   </section>
 
-  <div class="kiran-strip" style="margin-top:70px;"></div>
+  <div class="marquee" aria-hidden="true"><div id="mq"><span>Burgers</span><b>✦</b><span>Golden fries</span><b>✦</b><span>Fresh every order</span><b>✦</b><span>Come hungry</span><b>✦</b></div></div>
 
-  <!-- REAL-IMAGE ANIMATED COOKING PROCESS SECTION -->
-  <section class="real-cooking-section wrap">
-    <div class="section-head">
-      <h2 style="font-size: clamp(26px, 3.5vw, 36px); margin-bottom: 10px;">Freshly Stacked, Made to Order</h2>
-      <p style="color: #9ca3af; font-size: 1rem;">Real ingredients assembled step-by-step for our signature artisanal burger.</p>
-    </div>
-
-    <!-- Live Real Image Animation Stage -->
-    <div class="cooking-video-stage">
-      <!-- Real Bottom Bun -->
-      <img class="real-food-layer real-bun-bottom" src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=600&q=80" alt="Freshly Toasted Bun">
-      
-      <!-- Real Flame Grilled Patty -->
-      <img class="real-food-layer real-patty" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80" alt="Grilled Patty">
-      
-      <!-- Fully Assembled Gourmet Burger -->
-      <img class="real-food-layer real-assembled-burger" src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=600&q=80" alt="Freshly Served Gourmet Burger">
-    </div>
-
-    <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 25px;">
-      <span style="font-size: 0.85rem; color: #e5a93c; background: rgba(229,169,60,0.1); border: 1px solid rgba(229,169,60,0.2); padding: 8px 16px; border-radius: 20px;">1. Fresh Toasted Bun</span>
-      <span style="font-size: 0.85rem; color: #e5a93c; background: rgba(229,169,60,0.1); border: 1px solid rgba(229,169,60,0.2); padding: 8px 16px; border-radius: 20px;">2. Flame-Grilled Patty</span>
-      <span style="font-size: 0.85rem; color: #e5a93c; background: rgba(229,169,60,0.1); border: 1px solid rgba(229,169,60,0.2); padding: 8px 16px; border-radius: 20px;">3. Melted Cheese &amp; Veggies</span>
-      <span style="font-size: 0.85rem; color: #e5a93c; background: rgba(229,169,60,0.1); border: 1px solid rgba(229,169,60,0.2); padding: 8px 16px; border-radius: 20px;">4. Served Hot &amp; Fresh</span>
+  <!-- SHOWCASE -->
+  <section class="s">
+    <div class="wrap">
+      <div class="head rv">
+        <span class="eyebrow">Straight from the kitchen</span>
+        <h2>Freshly stacked, made to order</h2>
+        <p>Real ingredients assembled step by step for our signature burgers.</p>
+      </div>
+      <div class="bento">
+        <div class="tile rv"><video data-v="3553" data-s="burger" data-t="0" aria-label="Burger with black sesame"></video><span>Sesame classic</span></div>
+        <div class="tile rv" style="transition-delay:.08s"><video data-v="3538" data-s="burger" data-t="0" aria-label="Burgers in detail"></video><span>Stacked high</span></div>
+        <div class="tile rv" style="transition-delay:.16s"><video data-v="47159" data-s="fries" data-t="3" aria-label="Fries falling next to a burger"></video><span>Golden fries</span></div>
+        <div class="tile rv" style="transition-delay:.24s"><video data-v="3536" data-s="burger" data-t="0" aria-label="Pair of burgers"></video><span>Twin burgers</span></div>
+      </div>
+      <div class="steps rv"><span>1. Fresh toasted bun</span><span>2. Flame-grilled patty</span><span>3. Melted cheese &amp; veggies</span><span>4. Served hot &amp; fresh</span></div>
     </div>
   </section>
 
-  <!-- FEATURE STRIP -->
-  <section class="feature-strip" style="padding:0;">
-    <div class="feature-grid">
-      <a href="menu.html" class="feature-photo">
-        <!-- Fresh Breakfast/Shakshuka Image -->
-        <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=900&q=80" alt="Baked eggs in tomato sauce, fresh off the pan">
-      </a>
-      <div class="feature-cell">
-        <h3 style="font-size: 1.35rem; margin-bottom: 12px; color: #fff;">Baked eggs, done properly</h3>
-        <p style="line-height: 1.6; color: #9ca3af;">Slow-cooked tomato, cumin, a runny yolk, and warm sourdough to mop it up. Our most-ordered plate, for good reason.</p>
-        <a href="menu.html" style="margin-top: 12px; display: inline-block; color: #e5a93c; text-decoration: none;">View the full menu →</a>
+  <!-- FEATURES -->
+  <section class="s" style="padding-top:0">
+    <div class="wrap">
+      <div class="fs">
+        <a href="menu.html" class="fv rv"><video data-v="47191" data-s="burger" data-t="4" aria-label="Cheeseburger on a dark background"></video></a>
+        <div class="fc rv" style="transition-delay:.08s">
+          <h3>Burgers, done properly</h3>
+          <p>Thick patties, toasted buns and toppings added the moment you order. The plate our guests come back for.</p>
+          <a href="menu.html">View the full menu →</a>
+        </div>
+        <div class="fc rv" style="transition-delay:.16s">
+          <h3>Coffee, taken seriously</h3>
+          <p>Rotating single-origin beans, brewed to order. No syrup shortcuts, no rushed shots.</p>
+          <a href="menu.html">See drinks menu →</a>
+        </div>
+        <a href="menu.html" class="fv rv" style="transition-delay:.24s"><video data-v="24105" data-s="fries" data-t="0" aria-label="Hamburger and fries close up"></video></a>
       </div>
-      <div class="feature-cell">
-        <h3 style="font-size: 1.35rem; margin-bottom: 12px; color: #fff;">Coffee, taken seriously</h3>
-        <p style="line-height: 1.6; color: #9ca3af;">Rotating single-origin beans, brewed to order. No syrup shortcuts, no rushed shots.</p>
-        <a href="menu.html" style="margin-top: 12px; display: inline-block; color: #e5a93c; text-decoration: none;">See drinks menu →</a>
-      </div>
-      <a href="menu.html" class="feature-photo">
-        <!-- High Quality Artisanal Latte Art Image -->
-        <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=900&q=80" alt="Latte art in a ceramic cup, top view">
-      </a>
     </div>
   </section>
-
-  <hr class="rule">
 
   <!-- STORY -->
-  <section class="story reveal">
+  <section class="s story">
     <div class="wrap">
-      <div class="story-photo">
-        <!-- Fresh Bakery / Dessert Image -->
-        <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=900&q=80" alt="Cheesecake slice served with coffee">
-      </div>
-      <div class="story-text">
-        <h2 style="font-size:clamp(28px,3.5vw,38px);margin-bottom:22px; color:#fff;">Started with one espresso machine and a rented corner.</h2>
-        <p style="line-height: 1.6; color: #9ca3af;">Kettle &amp; Fig opened as a single counter and four stools. We kept it simple: good beans, a short menu done properly, and enough room to actually sit down.</p>
-        <p style="line-height: 1.6; color: #9ca3af;">Every plate is built around what's in season. The bakes come out of our own oven each morning — nothing is reheated to order.</p>
-        <a href="about.html" class="btn ghost" style="margin-top:12px;">Read our story</a>
+      <div class="sp rv"><div class="vid"><video data-v="3537" data-s="burger" data-t="0" aria-label="Chicken burger with french fries"></video></div></div>
+      <div class="rv" style="transition-delay:.1s">
+        <span class="eyebrow">Our story</span>
+        <h2>Started with one espresso machine and a rented corner.</h2>
+        <p>Kettle &amp; Fig opened as a single counter and four stools. We kept it simple: good beans, a short menu done properly, and enough room to actually sit down.</p>
+        <p>Every plate is built around what's in season. The bakes come out of our own oven each morning — nothing is reheated to order.</p>
+        <a href="about.html" class="btn btn-ghost" style="margin-top:10px;margin-left:0">Read our story</a>
       </div>
     </div>
   </section>
 
-  <hr class="rule">
-
-  <!-- BOOKING TEASER -->
-  <section class="booking">
-    <div class="wrap" style="text-align:left;max-width:640px;">
-      <div class="section-head" style="margin-bottom:24px;">
-        <h2 style="color:inherit;">Save yourself a table</h2>
-        <p>Weekends fill up by noon. Booking takes under a minute.</p>
-      </div>
-      <a href="booking.html" class="btn btn-nav">Reserve a table</a>
+  <!-- CTA -->
+  <section class="cta">
+    <video data-v="3532" data-t="0" aria-hidden="true"></video>
+    <div class="wrap rv">
+      <span class="eyebrow">Your table is waiting</span>
+      <h2>Save yourself a table</h2>
+      <p>Weekends fill up by noon. Booking takes under a minute.</p>
+      <a href="booking.html" class="btn btn-gold">Reserve a table</a>
     </div>
   </section>
 </main>
@@ -325,14 +288,93 @@
 <footer>
   <div class="wrap">
     <p>© 2026 Kettle &amp; Fig Cafe · Mailsi, Punjab</p>
-    <ul class="footer-links">
-      <li><a href="menu.html">Menu</a></li>
-      <li><a href="booking.html">Book a table</a></li>
-      <li><a href="about.html">Story</a></li>
-    </ul>
+    <ul class="fl"><li><a href="menu.html">Menu</a></li><li><a href="booking.html">Book a table</a></li><li><a href="about.html">Story</a></li></ul>
   </div>
 </footer>
 
-<script src="script.js"></script>
+<button class="motion" id="motion" aria-pressed="false" aria-label="Pause videos"><span id="mi">⏸</span><span id="mt">Pause videos</span></button>
+
+<script>
+// Build every <video> from its Mixkit id (720p first, 360p fallback)
+document.querySelectorAll('video[data-v]').forEach(function(v){
+  var id=v.dataset.v,b='https://assets.mixkit.co/videos/'+id+'/'+id;
+  v.muted=true;v.loop=true;v.setAttribute('playsinline','');v.setAttribute('muted','');v.preload='none';
+  v.poster=b+'-thumb-360-'+v.dataset.t+'.jpg';v.setAttribute('data-play','');
+  v.innerHTML='<source src="'+b+'-720.mp4" type="video/mp4"><source src="'+b+'-360.mp4" type="video/mp4">';
+});
+
+
+// Animated food scenes (illustrated, loop forever, no people)
+var STEAM='<g fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"><path class="sm" style="--d:0s" d="M80 42q-8-9 0-18t0-14"/><path class="sm" style="--d:.9s" d="M100 36q-8-9 0-18t0-14"/><path class="sm" style="--d:1.7s" d="M120 42q-8-9 0-18t0-14"/></g>';
+var SC={
+ burger:'<svg viewBox="0 0 200 200" aria-hidden="true"><ellipse cx="100" cy="176" rx="64" ry="8" fill="#000" opacity=".35"/>'+STEAM+
+  '<g class="L" style="--d:0s"><path d="M40 150h120v8q0 14-14 14H54q-14 0-14-14z" fill="#d98e3a"/></g>'+
+  '<g class="L" style="--d:.35s"><rect x="34" y="128" width="132" height="26" rx="13" fill="#5a2d17"/></g>'+
+  '<g class="L" style="--d:.7s"><path d="M32 126h136l-18 17-15-17-15 17-14-17-15 17-14-17-14 17z" fill="#f5b82e"/></g>'+
+  '<g class="L" style="--d:1.05s"><path d="M30 114q10-10 20 0t20 0 20 0 20 0 20 0 20 0 20 0v10H30z" fill="#5fb04a"/></g>'+
+  '<g class="L" style="--d:1.4s"><rect x="36" y="104" width="128" height="11" rx="5.5" fill="#d64045"/></g>'+
+  '<g class="L" style="--d:1.8s"><path d="M36 106Q36 50 100 50Q164 50 164 106z" fill="#e0963f"/><g fill="#fbe7b5"><ellipse cx="78" cy="74" rx="5" ry="2.4" transform="rotate(-25 78 74)"/><ellipse cx="102" cy="64" rx="5" ry="2.4"/><ellipse cx="126" cy="76" rx="5" ry="2.4" transform="rotate(25 126 76)"/><ellipse cx="100" cy="86" rx="5" ry="2.4" transform="rotate(8 100 86)"/></g></g></svg>',
+ fries:'<svg viewBox="0 0 200 200" aria-hidden="true"><ellipse cx="100" cy="178" rx="56" ry="7" fill="#000" opacity=".35"/>'+STEAM+
+  '<g transform="rotate(-10 67 112)"><rect class="F" style="--d:.1s" x="62" y="54" width="10" height="66" rx="3" fill="#f2c14e"/></g>'+
+  '<g transform="rotate(-5 81 112)"><rect class="F" style="--d:.25s" x="76" y="46" width="10" height="74" rx="3" fill="#f7d06a"/></g>'+
+  '<g transform="rotate(-1 95 112)"><rect class="F" style="--d:.4s" x="90" y="56" width="10" height="64" rx="3" fill="#f2c14e"/></g>'+
+  '<g transform="rotate(3 109 112)"><rect class="F" style="--d:.55s" x="104" y="44" width="10" height="76" rx="3" fill="#f7d06a"/></g>'+
+  '<g transform="rotate(7 123 112)"><rect class="F" style="--d:.7s" x="118" y="54" width="10" height="66" rx="3" fill="#f2c14e"/></g>'+
+  '<g transform="rotate(11 137 112)"><rect class="F" style="--d:.85s" x="132" y="62" width="10" height="58" rx="3" fill="#f7d06a"/></g>'+
+  '<path d="M54 108h92l-10 68H64z" fill="#d64045"/><path d="M54 108h92l-2 12H56z" fill="#b8282d"/><rect x="80" y="130" width="40" height="26" rx="6" fill="#f5b82e"/><circle cx="100" cy="143" r="6" fill="#d64045"/></svg>'
+};
+document.querySelectorAll('video[data-s]').forEach(function(v){
+  var d=document.createElement('div');d.className='scene '+v.dataset.s;d.innerHTML=SC[v.dataset.s];
+  v.parentNode.insertBefore(d,v);
+});
+function restart(){
+  if(document.hidden||document.documentElement.classList.contains('paused'))return;
+  var all=document.querySelectorAll('.scene svg');
+  all.forEach(function(x){x.classList.add('out');});
+  setTimeout(function(){all.forEach(function(x){x.classList.remove('out','go');void x.getBoundingClientRect();x.classList.add('go');});},520);
+}
+document.querySelectorAll('.scene svg').forEach(function(x){x.classList.add('go');});
+setInterval(restart,7500);
+
+// Theme
+(function(){var r=document.documentElement,b=document.getElementById('theme');
+ try{var s=localStorage.getItem('kf-theme');if(s)r.setAttribute('data-theme',s);}catch(e){}
+ b.addEventListener('click',function(){var n=r.getAttribute('data-theme')==='light'?'dark':'light';r.setAttribute('data-theme',n);try{localStorage.setItem('kf-theme',n);}catch(e){}});})();
+
+// Mobile menu
+(function(){var b=document.getElementById('menuBtn'),l=document.getElementById('links');
+ function set(o){l.classList.toggle('open',o);b.setAttribute('aria-expanded',o);b.textContent=o?'✕':'☰';}
+ b.addEventListener('click',function(){set(!l.classList.contains('open'));});
+ l.addEventListener('click',function(e){if(e.target.tagName==='A')set(false);});
+ addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});})();
+
+// Marquee loop + scroll progress + reveal
+(function(){var m=document.getElementById('mq');m.innerHTML+=m.innerHTML;m.innerHTML+=m.innerHTML;
+ var bar=document.getElementById('bar');
+ addEventListener('scroll',function(){var h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';},{passive:true});
+ var items=document.querySelectorAll('.rv');
+ if(!('IntersectionObserver' in window)){items.forEach(function(e){e.classList.add('in');});return;}
+ var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.15});
+ items.forEach(function(e){io.observe(e);});})();
+
+// Videos behave like GIFs: muted, looping, playing while visible
+(function(){
+ var vids=[].slice.call(document.querySelectorAll('video[data-play]')),paused=false;
+ function play(v){v.muted=true;var p=v.play();if(p&&p.catch)p.catch(function(){});}
+ vids.forEach(function(v){
+  v.addEventListener('playing',function(){v.classList.add('on');});
+  v.addEventListener('canplay',function(){if(!paused&&v._vis)play(v);});
+  v.addEventListener('error',function(){v.classList.add('stalled');},true);
+  setTimeout(function(){if(v.readyState<2&&!v.currentTime)v.classList.add('stalled');},5000);
+ });
+ var io=('IntersectionObserver' in window)?new IntersectionObserver(function(en){en.forEach(function(x){
+  var v=x.target;v._vis=x.isIntersecting;if(x.isIntersecting){if(!paused)play(v);}else{v.pause();}});},{threshold:.2}):null;
+ vids.forEach(function(v){if(io)io.observe(v);else{v._vis=true;play(v);}});
+ ['touchstart','click','scroll'].forEach(function(ev){addEventListener(ev,function(){if(!paused)vids.forEach(function(v){if(v._vis&&v.paused)play(v);});},{once:true,passive:true});});
+ var b=document.getElementById('motion'),i=document.getElementById('mi'),t=document.getElementById('mt');
+ b.addEventListener('click',function(){paused=!paused;document.documentElement.classList.toggle('paused',paused);vids.forEach(function(v){if(paused)v.pause();else if(v._vis)play(v);});
+  i.textContent=paused?'▶':'⏸';t.textContent=paused?'Play videos':'Pause videos';b.setAttribute('aria-pressed',paused);b.setAttribute('aria-label',paused?'Play videos':'Pause videos');});
+})();
+</script>
 </body>
 </html>
