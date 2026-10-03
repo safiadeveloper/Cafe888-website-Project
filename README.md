@@ -33,9 +33,11 @@ Below is a breakdown of the core images and screenshots representing key section
 | **01** | <img width="300" alt="Hero Section" src="https://github.com/user-attachments/assets/0670ea12-179a-4799-8132-0d031ac5c104" /> | **Hero Banner Section** | `assets/images/hero-section.jpg` |
 | **02** | <img width="300" alt="Fresh Off The Grill Burger" src="https://github.com/user-attachments/assets/ab8ef824-4543-4d77-bd95-d6f4c70bb365" /> | **Fresh Off The Grill Burger** | `assets/images/signature-burger.jpg` |
 | **03** | <img width="300" alt="Crispy Golden Fries" src="https://github.com/user-attachments/assets/200a2054-973b-4d28-a27a-ca2bb2ec5a47" /> | **Crispy Golden Fries** | `assets/images/golden-fries.jpg` |
-| **04** | ![Sesame Classic](assets/images/sesame-burger.jpg) | **Sesame Classic Burger** | `assets/images/sesame-burger.jpg` |
+| **04** | ![Sesame Classic](assets/images/sesame-burger.jpg) | **Sesame Classic Burger** | `<img width="950" height="440" alt="image" src="https://github.com/user-attachments/assets/a28164ea-3c19-4a56-b543-85e5283e3592" />
+` |
 | **05** | <img width="300" alt="Food Showcase Bento Grid" src="https://github.com/user-attachments/assets/69759034-2f2b-4c23-8f3b-9c2791e99cef" /> | **Food Showcase Bento Grid** | `assets/images/bento-showcase.jpg` |
-| **06** | ![Artisan Coffee](assets/images/artisan-coffee.jpg) | **Single-Origin Brewed Coffee** | `assets/images/artisan-coffee.jpg` |
+| **06** | ![Artisan Coffee](assets/images/artisan-coffee.jpg) | **Single-Origin Brewed Coffee** | `<img width="931" height="428" alt="image" src="https://github.com/user-attachments/assets/cf84c697-3cbd-4e0e-8948-a99e639183b0" />
+` |
 | **07** | <img width="300" alt="Table Reservation Interface" src="https://github.com/user-attachments/assets/526ba066-41d2-427a-b077-7f4ba237c1a2" /> | **Table Reservation Interface** | `assets/images/booking-ui.jpg` |
 | **08** | <img width="300" alt="Dark Theme Interface" src="https://github.com/user-attachments/assets/ad3f2961-5647-4193-b41f-ebda455289cd" /> | **Dark Theme Interface** | `assets/images/dark-theme.jpg` |
 | **09** | <img width="180" alt="Mobile View" src="https://github.com/user-attachments/assets/f791b62a-8cb0-4425-8a35-291e6a91712e" /> | **Mobile Navigation & Layout** | `assets/images/mobile-view.jpg` |
